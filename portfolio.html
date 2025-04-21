@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagasai Nadipally | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0e4166;
+            --secondary-color: #1e88e5;
+            --accent-color: #64b5f6;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --dark-bg: #212121;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        .hero-text .title {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .education {
+            margin-top: 40px;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .education-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .education-item p {
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--light-bg);
+        }
+
+        .skills-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .skill-category h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-item {
+            background-color: var(--light-bg);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Experience Section - Enhanced Design */
+        #experience {
+            background-color: var(--white);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-color);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: -30px;
+            margin-bottom: 60px;
+        }
+        
+        .experience-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .experience-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+        }
+        
+        .experience-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            background-color: var(--light-accent);
+        }
+        
+        .company-logo {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .company-logo img {
+            width: 75%;
+            height: auto;
+        }
+        
+        .job-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .company-name {
+            font-size: 18px;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .work-period {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .work-period i {
+            color: var(--secondary-color);
+        }
+        
+        .work-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .work-location i {
+            color: var(--secondary-color);
+        }
+        
+        .experience-content {
+            padding: 25px 30px;
+        }
+        
+        .responsibility-list {
+            list-style: none;
+        }
+        
+        .responsibility-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .responsibility-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+        
+        .key-achievements {
+            margin-top: 25px;
+            background-color: rgba(30, 136, 229, 0.05);
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+        
+        .key-achievements h4 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .key-achievements h4 i {
+            color: var(--secondary-color);
+        }
+        
+        .achievement-list {
+            list-style: none;
+        }
+        
+        .achievement-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        .achievement-item:before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 16px;
+        }
+        
+        .skills-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-accent);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        /* Projects Section */
+        #projects {
+            background-color: var(--light-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .project-info p {
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech {
+            font-size: 12px;
+            padding: 5px 10px;
+            background-color: var(--light-bg);
+            border-radius: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 20px;
+            color: var(--secondary-color);
+            margin-right: 15px;
+        }
+
+        .contact-form {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-form h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-top: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                position: absolute;
+                right: 0;
+                height: 100vh;
+                top: 80px;
+                background-color: var(--white);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: var(--box-shadow);
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .nav-active {
+                transform: translateX(0%);
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Nagasai Nadipally</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Nagasai Nadipally</h1>
+                    <p class="title">Full Stack Developer | Java & Web Technologies</p>
+                    <p>I'm a technology enthusiast with expertise in building robust web applications using Spring Boot and React.js. Currently pursuing my Master's in Information Technology at the University of Cincinnati.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                    <a href="Resume_3.pdf" class="btn"> Resume </a>
+                </div>
+                <div class="hero-image">
+                    <img src="photo.jpeg" alt="Nagasai Nadipally">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+                    <p>I'm a dedicated Full Stack Developer with experience in designing and implementing end-to-end web applications. My journey in technology began with a Bachelor's in Electronics and Communication Engineering, which provided me with a strong foundation in technical problem-solving.</p>
+                    <p>At IBM, I developed client-oriented applications using Spring Boot and React.js, honing my skills in both backend and frontend development. I'm passionate about creating clean, efficient code and delivering intuitive user experiences.</p>
+                    <p>Currently, I'm expanding my knowledge by pursuing a Master's in Information Technology at the University of Cincinnati, where I'm focusing on advanced concepts in software development and cloud technologies.</p>
+                    
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <h4>Master of Science, Information Technology</h4>
+                            <p>University of Cincinnati, Ohio</p>
+                            <p>Expected Graduation: May 2025</p>
+                            <p>GPA: 4.0/4.0</p>
+                        </div>
+                        <div class="education-item">
+                            <h4>Bachelor of Technology, Electronics and Communication Engineering</h4>
+                            <p>Malla Reddy Engineering College, Hyderabad, India</p>
+                            <p>2019 - 2023</p>
+                            <p>GPA: 3.6/4.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">C</div>
+                        <div class="skill-item">C++</div>
+                        <div class="skill-item">C#</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">HTML</div>
+                        <div class="skill-item">CSS</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Spring Boot</div>
+                        <div class="skill-item">React.js</div>
+                        <div class="skill-item">Node.js</div>
+                        <div class="skill-item">.NET</div>
+                        <div class="skill-item">Bootstrap</div>
+                        <div class="skill-item">Hibernate</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">Docker</div>
+                        <div class="skill-item">Postman</div>
+                        <div class="skill-item">Swagger</div>
+                        <div class="skill-item">Visual Studio Code</div>
+                        <div class="skill-item">RESTful APIs</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">PostgreSQL</div>
+                        <div class="skill-item">MongoDB</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Microsoft Azure</div>
+                        <div class="skill-item">GitHub</div>
+                        <div class="skill-item">Agile/Scrum</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Problem Solving</div>
+                        <div class="skill-item">Team Collaboration</div>
+                        <div class="skill-item">Communication</div>
+                        <div class="skill-item">Client Management</div>
+                        <div class="skill-item">Fast Learner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section - Enhanced Design -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">My professional journey has equipped me with hands-on experience in developing robust applications and implementing effective solutions for real-world challenges.</p>
+            
+            <div class="experience-wrapper">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-logo">
+                            <img src="ibm.jpg" alt="IBM Logo">
+                        </div>
+                        <h3 class="job-title">Application Developer – Java & Web Technologies</h3>
+                        <h4 class="company-name">IBM</h4>
+                        <div class="work-period">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>January 2023 – December 2023</span>
+                        </div>
+                        <div class="work-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangalore, India</span>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-content">
+                        <ul class="responsibility-list">
+                            <li class="responsibility-item">Developed and deployed client-oriented full-stack web applications utilizing Spring Boot (Java) and React.js, adhering to industry-standard architecture and maintaining clean coding principles.</li>
+                            <li class="responsibility-item">Performed debugging, troubleshooting, and ongoing enhancements to code quality, ensuring that applications are robust and user-friendly.</li>
+                            <li class="responsibility-item">Designed database structures and oversaw data storage layers utilizing MySQL, guaranteeing excellent data integrity and performance.</li>
+                            <li class="responsibility-item">Developed algorithms and RESTful APIs to fulfill business logic needs, while recording technical workflows and processes for team reference and future enhancements.</li>
+                            <li class="responsibility-item">Worked with various teams and internal stakeholders to collect and evaluate end-user needs, converting them into effective software solutions.</li>
+                            <li class="responsibility-item">Engaged in Agile project management by collaborating on sprint planning, attending daily stand-ups, and delivering iteratively, while adapting to swift updates and a fast-moving development environment.</li>
+                        </ul>
+                        
+                        
+                        
+                        <div class="skills-used">
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">RESTful APIs</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Agile</span>
+                            <span class="skill-tag">Microservices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="Restaurant.jpg" alt="Restaurant Management System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Restaurant Management System</h3>
+                        <p>Comprehensive system with separate functionalities for administrators and customers. Features include real-time inventory and order management with responsive UI.</p>
+                        <div class="tech-stack">
+                            <span class="tech">Angular</span>
+                            <span class="tech">Java</span>
+                            <span class="tech">Spring Boot</span>
+                            <span class="tech">MySQL</span>
+                            <span class="tech">Hibernate</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="weather.jpeg" alt="Weather Forecast Application">
+                    </div>
+                    <div class="project-info">
+                        <h3>Weather Forecast Application</h3>
+                        <p>Real-time weather application providing forecasts based on user location. Features include temperature conversion and integration with OpenWeatherMap API.</p>
+                        <div class="tech-stack">
+                            <span class="tech">HTML</span>
+                            <span class="tech">CSS</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Node.js</span>
+                            <span class="tech">API Integration</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="portfolio.jpg" alt="Personal Portfolio Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>Modern, responsive portfolio website showcasing skills, projects, and professional experience. Features include responsive design and interactive elements.</p>
+                        <div class="tech-stack">
+                            <span class="tech">HTML</span>
+                            <span class="tech">CSS</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Responsive Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>nadipani@mail.uc.edu</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(513)-537-3054</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cincinnati, Ohio, 45220</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span><a href="https://www.linkedin.com/in/nagasai2001" style="text-decoration: none; color: inherit;">linkedin.com/in/nagasai2001</a></span>
+                        
+                    </div>
+                </div>
+                <!--<div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/nagasai9966"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/nagasai2001"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/NadipallySai"><i class="fab fa-twitter"></i></a>
+                
+            </div>
+            <p class="copyright">&copy; 2025 Nagasai Nadipally. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+            
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                    
+                    navLinks.forEach((
